@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    无参构造方法实例化-->
+<!--    <bean id="userDao" class="com.luoli.dao.impl.UserDaoImpl" scope="singleton" init-method="init" destroy-method="destroy"></bean>-->
+<!--    工厂静态方法实例化-->
+<!--    <bean id="userDao" class="com.luoli.factory.StaticFactory" factory-method="getUserDao"></bean>-->
+<!--    工厂实例方法实例化-->
+<!--    <bean id="factory" class="com.luoli.factory.DynamicFactory"></bean>-->
+<!--    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
+
+<!--    <bean id="userDao" class="com.luoli.dao.impl.UserDaoImpl"></bean>-->
+<!--    <bean id="userService" class="com.luoli.service.impl.UserServiceImpl">-->
+<!--        <property name="userDao" ref="userDao"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="userService" class="com.luoli.service.impl.UserServiceImpl" p:userDao-ref="userDao">-->
+
+<!--    </bean>-->
+
+    <bean id="userService" class="com.luoli.service.impl.UserServiceImpl">
+            <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+    </bean>
+<!--    <bean id="userDao" class="com.luoli.dao.impl.UserDaoImpl">-->
+<!--        <property name="username" value="zhangsan"></property>-->
+<!--        <property name="age" value="18"></property>-->
+<!--    </bean>-->
+
+
+    <bean id="userDao" class="com.luoli.dao.impl.UserDaoImpl">
+      <property name="strList" >
+          <list>
+              <value>aaa</value>
+              <value>bbb</value>
+              <value>ccc</value>
+          </list>
+      </property>
+        <property name="userMap">
+            <map>
+                <entry key="u1" value-ref="user1"></entry>
+                <entry key="u2" value-ref="user2"></entry>
+            </map>
+            
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="p1">ppp1</prop>
+                <prop key="p2">ppp2</prop>
+                <prop key="p3">ppp3</prop>
+            </props>
+        </property>
+    </bean>
+    <bean name="user1" class="com.luoli.domian.User">
+        <property name="name" value="lisi"></property>
+        <property name="addr" value="henan"></property>
+    </bean>
+    <bean name="user2" class="com.luoli.domian.User">
+        <property name="name" value="wangwu"></property>
+        <property name="addr" value="开封"></property>
+    </bean>
+<!--    //导入副配置文件-->
+    <import resource="applicationContext-product.xml"/>
+    <import resource="applicationContext-user.xml"/>
+</beans>

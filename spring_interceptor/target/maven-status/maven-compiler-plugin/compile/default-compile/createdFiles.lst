@@ -1,0 +1,3 @@
+com\luoli\controller\TargetController.class
+com\luoli\interceptor\MyInterceptor1.class
+com\luoli\interceptor\MyInterceptor2.class

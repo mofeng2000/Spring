@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <typeAlias type="com.luoli.pojo.Account" alias="account"></typeAlias>
+        <!--        <package name="com.luoli.mapper"/>-->
+    </typeAliases>
+
+    <!--    加载映射文件-->
+    <mappers>
+        <mapper resource="com/luoli/mapper/Mapper.xml"></mapper>
+        <!--        扫包-->
+        <!--        <package name="com.luoli.mapper"/>-->
+    </mappers>
+
+
+</configuration>

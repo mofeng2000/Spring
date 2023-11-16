@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+">
+<!--   加载jdbc.properties -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+<!--    配置数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+<!--    配置jdbcTemplate模板-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+<!--    配置roleService-->
+    <bean id="roleService" class="com.luoli.service.impl.RoleServiceImpl">
+        <property name="roleDao" ref="roleDao"></property>
+     </bean>
+<!--    配置roleDao-->
+    <bean id="roleDao" class="com.luoli.dao.Impl.RoleDaoImpl">
+
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+
+    <!--    配置userService-->
+    <bean id="配置userService" class="com.luoli.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+        <property name="roleDao" ref="roleDao"/>
+    </bean>
+    <!--    配置userDao-->
+    <bean id="userDao" class="com.luoli.dao.Impl.UserDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+
+
+</beans>

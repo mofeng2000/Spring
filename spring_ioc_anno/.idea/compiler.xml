@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring_test" />
+        <module name="spring_jdbc" />
+        <module name="mybatis_multi" />
+        <module name="mybatis_quick" />
+        <module name="mybatis_dao" />
+        <module name="luoli_ssm" />
+        <module name="mybatis_config" />
+        <module name="mybatis_mapper" />
+        <module name="spring_exception" />
+        <module name="spring_ioc_anno" />
+        <module name="spring_interceptor" />
+        <module name="spring_aop" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="luoli_ssm" target="1.5" />
+      <module name="mabatis_multi" target="8" />
+      <module name="mybatis_config" target="1.5" />
+      <module name="mybatis_dao" target="1.5" />
+      <module name="mybatis_mapper" target="1.5" />
+      <module name="mybatis_multi" target="1.5" />
+      <module name="mybatis_quick" target="1.5" />
+      <module name="spring_aop" target="1.5" />
+      <module name="spring_exception" target="1.5" />
+      <module name="spring_interceptor" target="1.5" />
+      <module name="spring_ioc_anno" target="1.5" />
+      <module name="spring_jdbc" target="1.5" />
+      <module name="spring_mvc" target="1.5" />
+      <module name="spring_test" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

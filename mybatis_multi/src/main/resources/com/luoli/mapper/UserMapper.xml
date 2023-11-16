@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luoli.mapper.UserMapper">
+
+<!--    一对多-->
+    <resultMap id="userMap" type="user">
+        <id column="uid" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+        <!--    配置集合信息-->
+        <collection property="orderList" ofType="order">
+            <id column="oid" property="id"></id>
+            <result column="ordertime" property="ordertime"></result>
+            <result column="total" property="total"></result>
+        </collection>
+    </resultMap>
+    <select id="selectAll" resultMap="userMap">
+        SELECT *, o.id oid
+        FROM user u,
+             orders o
+        WHERE o.uid = u.id
+    </select>
+<!--    多对多-->
+    <resultMap id="userRoleMap" type="user">
+<!--        user信息-->
+        <id column="userId" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+<!--        user内部的roleList信息-->
+        <collection property="roleList" ofType="role">
+            <id property="id" column="roleId"></id>
+            <result column="roleName" property="roleName"></result>
+            <result column="roleDesc" property="roleDesc"></result>
+        </collection>
+
+    </resultMap>
+    <select id="selectUserAndRole" resultMap="userRoleMap">
+        select *
+        from user u,
+             sys_user_role ur,
+             sys_role r
+        where u.id = ur.userId
+          and ur.roleId = r.id    </select>
+</mapper>
